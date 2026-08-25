@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap configuration (Note: Update with final production domain upon deployment)
+# Sitemap: https://projectbridge.in/sitemap.xml
