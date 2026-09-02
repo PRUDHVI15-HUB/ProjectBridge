@@ -1,6 +1,10 @@
 import React from 'react';
+import { useScrollReveal, useScrollRevealGroup } from '../hooks/useScrollReveal';
 
 export default function HowItWorksSection() {
+  const headerRef = useScrollReveal(0.15);
+  const stepsRef = useScrollRevealGroup('.pb-reveal', 0.06);
+
   const steps = [
     {
       number: '01',
@@ -29,7 +33,7 @@ export default function HowItWorksSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <div ref={headerRef} className="pb-reveal text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             How It Works
           </h2>
@@ -38,13 +42,13 @@ export default function HowItWorksSection() {
           </p>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
+        {/* 4 Steps Grid — staggered reveal */}
+        <div ref={stepsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col items-start text-left">
+            <div key={index} className="pb-reveal pb-step-item flex flex-col items-start text-left">
               
-              {/* Number Badge */}
-              <div className="w-11 h-11 rounded-full bg-slate-100/90 border border-slate-200/80 flex items-center justify-center text-slate-900 font-bold text-sm mb-5 shadow-xs">
+              {/* Number Badge — gets dark fill on parent hover */}
+              <div className="pb-step-badge w-11 h-11 rounded-full bg-slate-100/90 border border-slate-200/80 flex items-center justify-center text-slate-900 font-bold text-sm mb-5 shadow-xs">
                 {step.number}
               </div>
 

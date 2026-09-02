@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import RequestProjectPage from './pages/RequestProjectPage';
+import ProjectIdeasPage from './pages/ProjectIdeasPage';
+import ProjectIdeaDetailPage from './pages/ProjectIdeaDetailPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -10,12 +12,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/request-project" element={<RequestProjectPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/"                          element={<LandingPage />} />
+        <Route path="/request-project"           element={<RequestProjectPage />} />
+        <Route path="/project-ideas"             element={<ProjectIdeasPage />} />
+        <Route path="/project-ideas/:projectId"  element={<ProjectIdeaDetailPage />} />
+        <Route path="/privacy-policy"            element={<PrivacyPolicyPage />} />
+        <Route path="/terms"                     element={<TermsPage />} />
         {/* Fallback 404 */}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*"                          element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

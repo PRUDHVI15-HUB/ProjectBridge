@@ -69,6 +69,11 @@ export default function Footer() {
                 </button>
               </li>
               <li>
+                <Link to="/project-ideas" className="hover:text-white transition">
+                  Project Ideas
+                </Link>
+              </li>
+              <li>
                 <button
                   onClick={() => handleNavClick('contact')}
                   className="hover:text-white transition"

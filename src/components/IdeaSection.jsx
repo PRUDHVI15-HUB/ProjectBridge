@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { Search, Flame } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function IdeaSection() {
-  const scrollToServices = () => {
-    const el = document.getElementById('services');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const ref = useScrollReveal(0.15);
 
   return (
     <section className="bg-[#EBF3FF] py-16 md:py-20 border-y border-blue-100/60">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        
+      <div
+        ref={ref}
+        className="pb-reveal max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
         {/* Heading */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
           Don&apos;t Know What Project to Build?
@@ -24,22 +24,26 @@ export default function IdeaSection() {
 
         {/* Buttons */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+
+          {/* Button 1: navigates to /project-ideas */}
           <Link
-            to="/request-project"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0F172A] text-white text-sm font-medium hover:bg-slate-800 active:scale-[0.98] transition shadow-sm"
+            to="/project-ideas"
+            className="pb-btn-arrow inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0F172A] text-white text-sm font-medium hover:bg-slate-800 hover:-translate-y-0.5 active:scale-[0.98] transition shadow-sm hover:shadow-md"
           >
             <span>Find a Project Idea</span>
-            <Search className="w-4 h-4" />
+            <Search className="pb-arrow-icon w-4 h-4" />
           </Link>
 
-          <button
-            onClick={scrollToServices}
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm font-medium hover:bg-slate-50 hover:text-slate-900 transition shadow-sm"
+          {/* Button 2: navigates to /project-ideas?filter=popular */}
+          <Link
+            to="/project-ideas?filter=popular"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm font-medium hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5 transition shadow-sm"
           >
-            Browse Popular Options
-          </button>
-        </div>
+            <Flame className="w-4 h-4 text-orange-500" aria-hidden="true" />
+            <span>Browse Popular Options</span>
+          </Link>
 
+        </div>
       </div>
     </section>
   );

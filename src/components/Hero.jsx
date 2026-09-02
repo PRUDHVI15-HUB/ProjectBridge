@@ -16,43 +16,43 @@ export default function Hero() {
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Pill Badge */}
-            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-indigo-50/80 border border-indigo-100/90 text-indigo-700 text-xs font-semibold uppercase tracking-wider mb-6">
+            {/* Pill Badge — entrance: fade-down */}
+            <div className="pb-hero-badge inline-flex items-center px-3.5 py-1.5 rounded-full bg-indigo-50/80 border border-indigo-100/90 text-indigo-700 text-xs font-semibold uppercase tracking-wider mb-6">
               Academic Project Support for Indian Students
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-slate-900 tracking-tight leading-[1.15] max-w-2xl">
+            {/* Main Headline — entrance: fade-up */}
+            <h1 className="pb-hero-headline text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-slate-900 tracking-tight leading-[1.15] max-w-2xl">
               Have a Project Idea? Let&apos;s Build It Together.
             </h1>
 
-            {/* Subtitle */}
-            <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+            {/* Subtitle — entrance: fade-up */}
+            <p className="pb-hero-subtitle mt-6 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
               Tell us what you need. We&apos;ll understand your requirements, discuss the project with you, and help turn your idea into a working academic project.
             </p>
 
-            {/* Action Buttons */}
-            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+            {/* Action Buttons — entrance: fade-up */}
+            <div className="pb-hero-buttons mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
               <Link
                 to="/request-project"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-[#0F172A] text-white text-base font-medium hover:bg-slate-800 active:scale-[0.98] transition shadow-sm"
+                className="pb-btn-arrow inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-[#0F172A] text-white text-base font-medium hover:bg-slate-800 hover:-translate-y-0.5 active:scale-[0.98] transition shadow-sm hover:shadow-md"
               >
                 <span>Start Your Project</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="pb-arrow-icon w-4 h-4" />
               </Link>
               
               <button
                 onClick={scrollToHowItWorks}
-                className="inline-flex items-center px-6 py-3.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-base font-medium hover:bg-slate-50 hover:text-slate-900 transition"
+                className="inline-flex items-center px-6 py-3.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-base font-medium hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5 transition"
               >
                 How It Works
               </button>
             </div>
           </div>
 
-          {/* Right Column: Your Project Journey Card */}
+          {/* Right Column: Your Project Journey Card — entrance: fade-left */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="w-full max-w-md bg-white rounded-2xl border border-slate-200/90 p-7 shadow-sm hover:shadow-md transition">
+            <div className="pb-hero-card w-full max-w-md bg-white rounded-2xl border border-slate-200/90 p-7 shadow-sm hover:shadow-md transition">
               
               {/* Card Title */}
               <div className="text-center mb-6">
@@ -94,7 +94,7 @@ export default function Hero() {
                       STEP 02 <span className="font-semibold text-slate-700 ml-1">PLAN</span>
                     </div>
                     <div className="text-xs text-slate-500 mt-0.5 leading-snug">
-                      We design technology stack & architectural plan
+                      We design technology stack &amp; architectural plan
                     </div>
                   </div>
                 </div>

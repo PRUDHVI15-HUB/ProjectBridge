@@ -6,11 +6,266 @@
   }
 }
 
-/* Custom smooth transitions and utility helpers */
+/* ============================================================
+   PROJECTBRIDGE ANIMATION SYSTEM
+   Pure CSS + IntersectionObserver — no external libraries
+   ============================================================ */
+
+/* ── Keyframes ───────────────────────────────────────────── */
+
+@keyframes pb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pb-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pb-fade-down {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pb-fade-left {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pb-fade-right {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pb-scale-in {
+  from { opacity: 0; transform: scale(0.90); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pb-check-pop {
+  0%   { opacity: 0; transform: scale(0.6); }
+  60%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pb-arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(4px); }
+}
+
+/* ── Hero entrance animations (always play on load) ──────── */
+
+.pb-hero-badge {
+  opacity: 0;
+  animation: pb-fade-down 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+.pb-hero-headline {
+  opacity: 0;
+  animation: pb-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.pb-hero-subtitle {
+  opacity: 0;
+  animation: pb-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+}
+
+.pb-hero-buttons {
+  opacity: 0;
+  animation: pb-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+}
+
+.pb-hero-card {
+  opacity: 0;
+  animation: pb-fade-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+/* ── Scroll-reveal system ────────────────────────────────── */
+/* Elements start hidden; JS adds .pb-revealed when in view  */
+
+.pb-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pb-reveal.pb-from-left {
+  transform: translateX(-20px);
+}
+
+.pb-reveal.pb-from-right {
+  transform: translateX(20px);
+}
+
+.pb-reveal.pb-scale {
+  transform: scale(0.92);
+}
+
+.pb-reveal.pb-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays for siblings */
+.pb-stagger-1 { transition-delay: 0.05s; }
+.pb-stagger-2 { transition-delay: 0.12s; }
+.pb-stagger-3 { transition-delay: 0.19s; }
+.pb-stagger-4 { transition-delay: 0.26s; }
+.pb-stagger-5 { transition-delay: 0.33s; }
+.pb-stagger-6 { transition-delay: 0.40s; }
+
+/* ── Success icon pop ────────────────────────────────────── */
+
+.pb-success-icon {
+  animation: pb-check-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.pb-success-heading {
+  opacity: 0;
+  animation: pb-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+.pb-success-body {
+  opacity: 0;
+  animation: pb-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+}
+
+.pb-success-actions {
+  opacity: 0;
+  animation: pb-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.54s forwards;
+}
+
+/* ── Navbar scroll shadow ────────────────────────────────── */
+
+.pb-navbar {
+  transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.pb-navbar.pb-scrolled {
+  box-shadow: 0 1px 12px 0 rgba(0,0,0,0.08);
+  background-color: rgba(255,255,255,0.98);
+}
+
+/* ── Button arrow nudge on hover ─────────────────────────── */
+
+.pb-btn-arrow .pb-arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.pb-btn-arrow:hover .pb-arrow-icon {
+  transform: translateX(3px);
+}
+
+/* ── Card hover lift ─────────────────────────────────────── */
+
 .card-hover {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px -6px rgba(0,0,0,0.10);
 }
+
+/* ── Nav link underline micro-interaction ────────────────── */
+
+.pb-nav-link {
+  position: relative;
+}
+
+.pb-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #0F172A;
+  border-radius: 2px;
+  transition: width 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pb-nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Form focus enhancements ─────────────────────────────── */
+
+.pb-form-section {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pb-form-section.pb-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Error message reveal */
+.pb-error-msg {
+  animation: pb-fade-up 0.2s ease-out both;
+}
+
+/* ── Number badge in How It Works ────────────────────────── */
+
+.pb-step-badge {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.pb-step-item:hover .pb-step-badge {
+  background-color: #0F172A;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* ── Reduced motion: remove all transforms & animations ──── */
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-hero-badge,
+  .pb-hero-headline,
+  .pb-hero-subtitle,
+  .pb-hero-buttons,
+  .pb-hero-card,
+  .pb-success-icon,
+  .pb-success-heading,
+  .pb-success-body,
+  .pb-success-actions {
+    animation: none;
+    opacity: 1;
+  }
+
+  .pb-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .pb-form-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .pb-nav-link::after {
+    transition: none;
+  }
+
+  .card-hover {
+    transition: none;
+  }
+
+  .pb-btn-arrow .pb-arrow-icon {
+    transition: none;
+  }
+
+  .pb-step-badge {
+    transition: none;
+  }
+}
+

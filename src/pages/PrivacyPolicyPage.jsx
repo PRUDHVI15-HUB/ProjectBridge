@@ -4,7 +4,7 @@ import { ArrowLeft, ShieldCheck } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { SUPPORT_EMAIL, SUPPORT_PHONE_DISPLAY } from '../config/constants';
+import { SUPPORT_EMAIL, SUPPORT_PHONE_DISPLAY, SUPPORT_PHONE_RAW } from '../config/constants';
 
 export default function PrivacyPolicyPage() {
   useEffect(() => {
@@ -159,7 +159,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 text-xs sm:text-sm space-y-1">
                 <div><strong className="text-slate-800">Email:</strong> <a href={`mailto:${SUPPORT_EMAIL}`} className="text-blue-600 hover:underline">{SUPPORT_EMAIL}</a></div>
-                <div><strong className="text-slate-800">Phone / WhatsApp:</strong> <a href={`tel:+919603347698`} className="text-blue-600 hover:underline">{SUPPORT_PHONE_DISPLAY}</a></div>
+                <div><strong className="text-slate-800">Phone / WhatsApp:</strong> <a href={`tel:+${SUPPORT_PHONE_RAW}`} className="text-blue-600 hover:underline">{SUPPORT_PHONE_DISPLAY}</a></div>
               </div>
             </section>
 
