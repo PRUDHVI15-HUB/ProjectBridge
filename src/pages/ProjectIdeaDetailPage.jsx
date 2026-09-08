@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, ArrowRight, CheckCircle, Zap, GraduationCap,
@@ -9,7 +9,8 @@ import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { projectIdeas } from '../data/projectIdeas';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { getProjectIdeaWhatsAppUrl, openWhatsApp } from '../utils/whatsapp';
+import { SUPPORT_EMAIL } from '../config/constants';
+import { getProjectIdeaEmailUrl, openEmailClient } from '../utils/email';
 
 /** Difficulty badge styles */
 const difficultyStyles = {
@@ -22,6 +23,9 @@ export default function ProjectIdeaDetailPage() {
   const { projectId } = useParams();
   const navigate = useNavigate();
 
+  const [emailTriggered, setEmailTriggered] = useState(false);
+  const [emailUrl, setEmailUrl] = useState('');
+
   const project = projectIdeas.find((p) => p.id === projectId);
 
   useEffect(() => {
@@ -30,8 +34,10 @@ export default function ProjectIdeaDetailPage() {
 
   const handleRequestProject = () => {
     if (project) {
-      const url = getProjectIdeaWhatsAppUrl(project);
-      openWhatsApp(url);
+      const url = getProjectIdeaEmailUrl(project);
+      setEmailUrl(url);
+      setEmailTriggered(true);
+      openEmailClient(url);
     }
   };
 
@@ -241,13 +247,39 @@ export default function ProjectIdeaDetailPage() {
               <button
                 onClick={handleRequestProject}
                 className="pb-btn-arrow inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-slate-900 text-base font-bold hover:bg-slate-100 hover:-translate-y-0.5 active:scale-[0.98] transition shadow-lg hover:shadow-xl cursor-pointer"
-                aria-label={`Request ${title} on WhatsApp`}
+                aria-label={`Request ${title} via Email`}
               >
                 <span>Request This Project</span>
                 <ArrowRight className="pb-arrow-icon w-4 h-4" />
               </button>
+
+              {/* Graceful feedback / fallback notice if email client doesn't open */}
+              {emailTriggered && (
+                <div className="mt-5 p-4 rounded-xl bg-slate-900/90 border border-slate-700 text-left max-w-lg mx-auto">
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Opening your default email application with pre-filled project details. Please review the email and click <strong className="text-white">Send</strong>.
+                  </p>
+                  <p className="mt-2 text-[11px] text-slate-400">
+                    Didn&apos;t open automatically?{' '}
+                    <a
+                      href={emailUrl}
+                      className="text-blue-400 font-semibold hover:underline"
+                    >
+                      Re-open email
+                    </a>
+                    {' '}or write directly to{' '}
+                    <a
+                      href={`mailto:${SUPPORT_EMAIL}`}
+                      className="text-white font-mono font-medium hover:underline"
+                    >
+                      {SUPPORT_EMAIL}
+                    </a>.
+                  </p>
+                </div>
+              )}
+
               <p className="mt-4 text-xs text-slate-400">
-                Opens WhatsApp directly with this project&apos;s details pre-filled so you can connect with our mentors.
+                Opens your email client with this project&apos;s details pre-filled so you can connect with our team.
               </p>
             </div>
           </div>

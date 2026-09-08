@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Loader2 } from 'lucide-react';
-import { getWhatsAppUrl, openWhatsApp } from '../../utils/whatsapp';
+import { ArrowRight, Loader2, Mail } from 'lucide-react';
+import { SUPPORT_EMAIL } from '../../config/constants';
+import { getProjectRequestEmailUrl, openEmailClient } from '../../utils/email';
 
 export default function RequestForm({ onSubmitSuccess, initialData }) {
   const [formData, setFormData] = useState({
@@ -20,6 +21,8 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailTriggered, setEmailTriggered] = useState(false);
+  const [generatedMailtoUrl, setGeneratedMailtoUrl] = useState('');
 
   const branches = [
     'CSE (Computer Science & Engineering)',
@@ -117,15 +120,16 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
 
     setIsSubmitting(true);
 
-    // Generate WhatsApp URL and open
-    const waUrl = getWhatsAppUrl(formData);
-    openWhatsApp(waUrl);
+    // Generate mailto URL and open default email client
+    const emailUrl = getProjectRequestEmailUrl(formData);
+    setGeneratedMailtoUrl(emailUrl);
+    openEmailClient(emailUrl);
 
-    // Transition smoothly to the confirmation state
     setTimeout(() => {
       setIsSubmitting(false);
+      setEmailTriggered(true);
       if (onSubmitSuccess) {
-        onSubmitSuccess(formData, waUrl);
+        onSubmitSuccess(formData, emailUrl);
       }
     }, 400);
   };
@@ -468,12 +472,12 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[#0F172A] text-white text-base font-semibold hover:bg-slate-800 active:scale-[0.98] disabled:opacity-75 disabled:cursor-not-allowed transition shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[#0F172A] text-white text-base font-semibold hover:bg-slate-800 active:scale-[0.98] disabled:opacity-75 disabled:cursor-not-allowed transition shadow-sm cursor-pointer"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                <span>Submitting Request...</span>
+                <span>Preparing Request...</span>
               </>
             ) : (
               <>
@@ -483,8 +487,38 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
             )}
           </button>
 
+          {/* Email launch feedback & graceful fallback notice */}
+          {emailTriggered && (
+            <div className="mt-5 p-4 rounded-xl bg-blue-50/80 border border-blue-100 text-left max-w-lg mx-auto">
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                <div className="space-y-1.5 text-xs text-slate-600 leading-relaxed">
+                  <p className="font-semibold text-slate-900 text-sm">
+                    Opening your email client...
+                  </p>
+                  <p>
+                    Your project details have been pre-filled into your default email app. Please review the email and press <strong className="text-slate-800 font-semibold">Send</strong> to deliver your request to ProjectBridge.
+                  </p>
+                  <div className="pt-1 border-t border-blue-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-500">
+                    <span>Didn&apos;t open automatically?</span>
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={generatedMailtoUrl}
+                        className="text-blue-600 font-semibold hover:underline"
+                      >
+                        Re-open email client
+                      </a>
+                      <span>•</span>
+                      <span>Email: <strong className="text-slate-700 font-mono">{SUPPORT_EMAIL}</strong></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           <p className="mt-3.5 text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-            By submitting, you agree that ProjectBridge may review your requirement and contact you via WhatsApp. See our{' '}
+            By submitting, you agree that ProjectBridge may review your requirement and contact you via Phone or WhatsApp. See our{' '}
             <Link to="/privacy-policy" className="text-blue-600 hover:underline">
               Privacy Policy
             </Link>{' '}

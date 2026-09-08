@@ -13,6 +13,6 @@
 export const WHATSAPP_NUMBER = "919603347698";
 
 // Support Contact Details
-export const SUPPORT_EMAIL = "hello@projectbridge.in";
+export const SUPPORT_EMAIL = "prudhvi114489@gmail.com";
 export const SUPPORT_PHONE_DISPLAY = "+91 96033 47698";
 export const SUPPORT_PHONE_RAW = "919603347698";
