@@ -46,7 +46,7 @@ export default function ProjectIdeaDetailPage() {
     return (
       <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
         <Navbar />
-        <main className="flex-grow flex items-center justify-center px-4">
+        <main className="grow flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-slate-900 mb-3">Project Not Found</h1>
             <p className="text-slate-500 mb-6">We couldn&apos;t find that project idea. It may have been moved or removed.</p>
@@ -83,7 +83,7 @@ export default function ProjectIdeaDetailPage() {
       />
       <Navbar />
 
-      <main className="flex-grow">
+      <main className="grow">
 
         {/* ── BACK NAV ────────────────────────────────────── */}
         <div className="bg-white border-b border-slate-100">
@@ -197,7 +197,7 @@ export default function ProjectIdeaDetailPage() {
                   key={i}
                   className="flex items-start gap-3 p-4 bg-white rounded-xl border border-slate-200/80"
                 >
-                  <span className="w-6 h-6 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-xs flex-shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-xs shrink-0 mt-0.5">
                     {i + 1}
                   </span>
                   <p className="text-sm text-slate-700">{feat}</p>
@@ -223,7 +223,7 @@ export default function ProjectIdeaDetailPage() {
                   key={i}
                   className="flex items-start gap-2.5 p-4 bg-white rounded-xl border border-slate-200/80"
                 >
-                  <Lightbulb className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <Lightbulb className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                   <p className="text-sm text-slate-600">{item}</p>
                 </div>
               ))}

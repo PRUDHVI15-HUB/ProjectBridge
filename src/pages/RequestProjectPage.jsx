@@ -18,7 +18,7 @@ export default function RequestProjectPage() {
       />
       <Navbar />
 
-      <main className="flex-grow pb-20 sm:pb-28">
+      <main className="grow pb-20 sm:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RequestHero />
           <RequestForm />
