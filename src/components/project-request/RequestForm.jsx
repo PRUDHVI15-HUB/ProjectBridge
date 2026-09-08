@@ -120,18 +120,18 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
 
     setIsSubmitting(true);
 
-    // Generate mailto URL and open default email client
+    // Generate mailto URL and launch email client
     const emailUrl = getProjectRequestEmailUrl(formData);
     setGeneratedMailtoUrl(emailUrl);
-    openEmailClient(emailUrl);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setEmailTriggered(true);
-      if (onSubmitSuccess) {
-        onSubmitSuccess(formData, emailUrl);
-      }
-    }, 400);
+    // Switch to success confirmation immediately so it is visible when student returns from email app
+    if (onSubmitSuccess) {
+      onSubmitSuccess(formData, emailUrl);
+    }
+
+    openEmailClient(emailUrl);
+    setIsSubmitting(false);
+    setEmailTriggered(true);
   };
 
   return (

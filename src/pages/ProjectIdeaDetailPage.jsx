@@ -36,10 +36,8 @@ export default function ProjectIdeaDetailPage() {
     if (project) {
       const url = getProjectIdeaEmailUrl(project);
       setEmailUrl(url);
+      setIsSubmitted(true);
       openEmailClient(url);
-      setTimeout(() => {
-        setIsSubmitted(true);
-      }, 400);
     }
   };
 
