@@ -11,9 +11,12 @@ const difficultyStyles = {
 
 /** Project type badge style */
 const typeStyles = {
-  'Mini Project':  'bg-slate-100 text-slate-600',
-  'Major Project': 'bg-indigo-50 text-indigo-700',
-  'Minor Project': 'bg-slate-100 text-slate-600',
+  'Lab Project':        'bg-emerald-50 text-emerald-700',
+  'Mini Project':       'bg-slate-100 text-slate-600',
+  'Minor Project':      'bg-slate-100 text-slate-600',
+  'Major Project':      'bg-indigo-50 text-indigo-700',
+  'Final Year Project': 'bg-purple-50 text-purple-700',
+  'Advanced Project':   'bg-blue-50 text-blue-700',
 };
 
 export default function ProjectIdeaCard({ project }) {

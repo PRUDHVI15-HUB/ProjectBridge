@@ -143,11 +143,12 @@ export function getProjectIdeaEmailUrl(projectIdea) {
 
 /**
  * Safely opens the default email application with pre-filled content.
+ * Strictly verifies that only valid mailto: protocols are navigated to.
  *
  * @param {string} url mailto: link
  */
 export function openEmailClient(url) {
-  if (typeof window !== 'undefined' && url) {
+  if (typeof window !== 'undefined' && typeof url === 'string' && url.startsWith('mailto:')) {
     window.location.href = url;
   }
 }

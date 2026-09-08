@@ -1,14 +1,14 @@
 import React from 'react';
-import { X, SlidersHorizontal } from 'lucide-react';
+import { X, SlidersHorizontal, Flame } from 'lucide-react';
 import { BRANCHES, YEARS, TYPES, TECHNOLOGIES, DIFFICULTIES } from '../../data/projectIdeas';
 
 /**
  * ProjectFilters
  *
- * Renders filter dropdowns/pill groups for branch, year, type, technology, difficulty.
+ * Renders filter dropdowns/pill groups for branch, year, type, technology, difficulty, and popular status.
  * On mobile the filters live inside a collapsible drawer triggered by parent.
  */
-export default function ProjectFilters({ filters, onChange, onClear, activeCount }) {
+export default function ProjectFilters({ filters, onChange, onClear, activeCount, isPopular, onTogglePopular }) {
   const { branch, year, type, technology, difficulty } = filters;
 
   const handleChange = (key, value) => onChange({ ...filters, [key]: value });
@@ -43,6 +43,23 @@ export default function ProjectFilters({ filters, onChange, onClear, activeCount
 
       {/* Filter controls */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+
+        {/* Popular Only Quick Toggle */}
+        {onTogglePopular && (
+          <div className="p-2.5 rounded-lg bg-orange-50/70 border border-orange-100 flex items-center justify-between">
+            <label htmlFor="filter-popular" className="text-xs font-semibold text-slate-800 flex items-center gap-1.5 cursor-pointer">
+              <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-400" aria-hidden="true" />
+              <span>Popular Only</span>
+            </label>
+            <input
+              id="filter-popular"
+              type="checkbox"
+              checked={!!isPopular}
+              onChange={(e) => onTogglePopular(e.target.checked)}
+              className="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-slate-300 cursor-pointer accent-orange-600"
+            />
+          </div>
+        )}
 
         {/* Branch */}
         <div>

@@ -41,6 +41,12 @@ export default function ProjectIdeaDetailPage() {
     }
   };
 
+  const heroRef    = useScrollReveal(0.1);
+  const metaRef    = useScrollReveal(0.1);
+  const featRef    = useScrollReveal(0.1);
+  const futureRef  = useScrollReveal(0.1);
+  const ctaRef     = useScrollReveal(0.1);
+
   // 404 handling
   if (!project) {
     return (
@@ -63,12 +69,6 @@ export default function ProjectIdeaDetailPage() {
       </div>
     );
   }
-
-  const heroRef    = useScrollReveal(0.1);
-  const metaRef    = useScrollReveal(0.1);
-  const featRef    = useScrollReveal(0.1);
-  const futureRef  = useScrollReveal(0.1);
-  const ctaRef     = useScrollReveal(0.1);
 
   const {
     title, description, overview, category, branches, years,

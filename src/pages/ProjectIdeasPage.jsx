@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
-import { Search, X, SlidersHorizontal, ChevronDown } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { Search, X, SlidersHorizontal, ChevronDown, Flame } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -37,7 +37,7 @@ function applyFilters(ideas, search, filters) {
     // Year
     if (filters.year !== 'All Years' && !p.years.includes(filters.year)) return false;
 
-    // Type — partial match so "Mini Project" matches "Minor Project" too if needed
+    // Type — matches exact project type
     if (filters.type !== 'All Types' && p.type !== filters.type) return false;
 
     // Technology
@@ -51,8 +51,9 @@ function applyFilters(ideas, search, filters) {
 }
 
 /* ── Count active filters ─────────────────────────────────── */
-function countActive(search, filters) {
+function countActive(search, filters, isPopular) {
   let n = 0;
+  if (isPopular) n++;
   if (search.trim()) n++;
   if (filters.branch     !== 'All Branches')     n++;
   if (filters.year       !== 'All Years')         n++;
@@ -63,8 +64,8 @@ function countActive(search, filters) {
 }
 
 export default function ProjectIdeasPage() {
-  const [searchParams] = useSearchParams();
-  const popularParam = searchParams.get('filter') === 'popular';
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isPopular = searchParams.get('filter') === 'popular';
 
   const [search, setSearch]   = useState('');
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
@@ -75,10 +76,25 @@ export default function ProjectIdeasPage() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
+  const handleTogglePopular = (enable) => {
+    const nextParams = new URLSearchParams(searchParams);
+    if (enable) {
+      nextParams.set('filter', 'popular');
+    } else {
+      nextParams.delete('filter');
+    }
+    setSearchParams(nextParams);
+  };
+
+  const popularCount = useMemo(
+    () => projectIdeas.filter((p) => p.popular).length,
+    []
+  );
+
   // If ?filter=popular is in the URL, scope to popular projects
   const ideasPool = useMemo(
-    () => (popularParam ? projectIdeas.filter((p) => p.popular) : projectIdeas),
-    [popularParam]
+    () => (isPopular ? projectIdeas.filter((p) => p.popular) : projectIdeas),
+    [isPopular]
   );
 
   const filtered = useMemo(
@@ -86,11 +102,16 @@ export default function ProjectIdeasPage() {
     [ideasPool, search, filters]
   );
 
-  const activeCount = countActive(search, filters);
+  const activeCount = countActive(search, filters, isPopular);
 
   const clearAll = () => {
     setSearch('');
     setFilters(DEFAULT_FILTERS);
+    if (searchParams.has('filter')) {
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.delete('filter');
+      setSearchParams(nextParams);
+    }
   };
 
   // Scroll-reveal refs
@@ -119,12 +140,12 @@ export default function ProjectIdeasPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title="Project Ideas for B.Tech Students — ProjectBridge"
-        description="Explore 18+ academic project ideas for CSE, IT, ECE, AI & ML, and more. Filter by branch, year, technology, and difficulty. Find your perfect B.Tech project."
+        title={isPopular ? "Popular Software Project Ideas — ProjectBridge" : "Project Ideas for B.Tech Students — ProjectBridge"}
+        description="Explore 50+ academic software project ideas for CSE, IT, and AI & ML. Filter by branch, year, technology, and difficulty. Find your perfect B.Tech software project."
       />
       <Navbar />
 
-      <main className="flex-grow">
+      <main className="grow">
 
         {/* ── PAGE HERO ─────────────────────────────────────── */}
         <section className="bg-white border-b border-slate-100 pt-12 pb-14">
@@ -136,16 +157,18 @@ export default function ProjectIdeasPage() {
               Project Ideas
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Find a Project You&apos;ll Actually Enjoy Building.
+              {isPopular ? "Browse Popular Project Ideas" : "Find a Project You'll Actually Enjoy Building."}
             </h1>
             <p className="mt-5 text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              Not sure what to build? Explore practical project ideas based on your branch, year, interests, and technology.
+              {isPopular
+                ? "Handpicked popular software projects frequently requested by engineering students. Filter by branch, year, or technology to narrow down your options."
+                : "Not sure what to build? Explore practical project ideas based on your branch, year, interests, and technology."}
             </p>
           </div>
         </section>
 
         {/* ── SEARCH + FILTER TRIGGER (mobile) ─────────────── */}
-        <div className="bg-white border-b border-slate-100 sticky top-[80px] z-40 shadow-sm">
+        <div className="bg-white border-b border-slate-100 sticky top-20 z-40 shadow-sm">
           <div
             ref={searchRef}
             className="pb-reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3"
@@ -168,7 +191,7 @@ export default function ProjectIdeasPage() {
               {search && (
                 <button
                   onClick={() => setSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition cursor-pointer"
                   aria-label="Clear search"
                 >
                   <X className="w-4 h-4" />
@@ -179,7 +202,7 @@ export default function ProjectIdeasPage() {
             {/* Mobile filter toggle */}
             <button
               onClick={() => setDrawerOpen((v) => !v)}
-              className="lg:hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition relative"
+              className="lg:hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition relative cursor-pointer"
               aria-expanded={drawerOpen}
               aria-controls="mobile-filter-drawer"
               aria-label="Toggle filters"
@@ -198,7 +221,7 @@ export default function ProjectIdeasPage() {
             </button>
 
             {/* Active count label — desktop */}
-            <p className="hidden lg:block text-xs text-slate-400 whitespace-nowrap flex-shrink-0">
+            <p className="hidden lg:block text-xs text-slate-400 whitespace-nowrap shrink-0">
               {filtered.length} idea{filtered.length !== 1 ? 's' : ''} found
             </p>
           </div>
@@ -214,6 +237,8 @@ export default function ProjectIdeasPage() {
                 onChange={setFilters}
                 onClear={clearAll}
                 activeCount={activeCount}
+                isPopular={isPopular}
+                onTogglePopular={handleTogglePopular}
               />
             </div>
           )}
@@ -224,32 +249,71 @@ export default function ProjectIdeasPage() {
           <div className="flex gap-8">
 
             {/* Desktop sidebar filters */}
-            <aside className="hidden lg:block w-60 flex-shrink-0">
-              <div className="sticky top-[152px] bg-white border border-slate-200/80 rounded-xl p-5 shadow-xs">
+            <aside className="hidden lg:block w-60 shrink-0">
+              <div className="sticky top-38 bg-white border border-slate-200/80 rounded-xl p-5 shadow-xs">
                 <ProjectFilters
                   filters={filters}
                   onChange={setFilters}
                   onClear={clearAll}
                   activeCount={activeCount}
+                  isPopular={isPopular}
+                  onTogglePopular={handleTogglePopular}
                 />
               </div>
             </aside>
 
             {/* Cards grid */}
             <div className="flex-1 min-w-0">
-              {/* Result count — mobile */}
-              <p className="lg:hidden text-xs text-slate-400 mb-4">
-                {filtered.length} idea{filtered.length !== 1 ? 's' : ''} found
-                {popularParam && <span className="ml-1 font-semibold text-indigo-600">· Popular picks</span>}
-              </p>
+              {/* Tab switcher: All Projects vs Popular Options */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-3 border-b border-slate-200/80">
+                <div className="inline-flex p-1 rounded-xl bg-slate-100 border border-slate-200/80 text-xs font-semibold">
+                  <button
+                    type="button"
+                    onClick={() => handleTogglePopular(false)}
+                    className={`px-3.5 py-1.5 rounded-lg transition cursor-pointer ${
+                      !isPopular
+                        ? 'bg-white text-slate-900 shadow-xs font-bold'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    All Projects ({projectIdeas.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleTogglePopular(true)}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition cursor-pointer ${
+                      isPopular
+                        ? 'bg-white text-orange-600 shadow-xs font-bold'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-400" />
+                    <span>Popular ({popularCount})</span>
+                  </button>
+                </div>
 
-              {/* Popular banner */}
-              {popularParam && (
-                <div className="mb-6 px-4 py-3 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center gap-2">
-                  <span className="text-indigo-600 text-sm font-semibold">⭐ Showing popular project ideas</span>
-                  <Link to="/project-ideas" className="ml-auto text-xs text-slate-500 hover:text-slate-700 transition underline underline-offset-2">
-                    View all ideas
-                  </Link>
+                <div className="text-xs text-slate-500">
+                  Showing <strong className="text-slate-900 font-semibold">{filtered.length}</strong> {filtered.length === 1 ? 'project' : 'projects'}
+                  {isPopular && <span className="text-orange-600 font-semibold ml-1">· Popular filter active</span>}
+                </div>
+              </div>
+
+              {/* Popular banner if active */}
+              {isPopular && (
+                <div className="mb-6 px-4 py-3 rounded-xl bg-orange-50/80 border border-orange-100 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Flame className="w-4 h-4 text-orange-500 fill-orange-400 shrink-0" aria-hidden="true" />
+                    <span className="text-slate-800 text-xs sm:text-sm font-medium">
+                      Showing <strong className="text-slate-900 font-semibold">popular project ideas</strong> requested by students.
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleTogglePopular(false)}
+                    className="text-xs text-orange-700 hover:text-orange-900 font-semibold underline underline-offset-2 shrink-0 cursor-pointer"
+                  >
+                    Show all ({projectIdeas.length})
+                  </button>
                 </div>
               )}
 
@@ -274,11 +338,13 @@ export default function ProjectIdeasPage() {
                   </div>
                   <h2 className="text-xl font-bold text-slate-900 mb-2">No project ideas found</h2>
                   <p className="text-sm text-slate-500 max-w-sm mx-auto mb-6">
-                    Try changing your filters or searching for another topic.
+                    {isPopular
+                      ? "No popular project ideas matched your filter criteria. Try clearing some filters or browsing all projects."
+                      : "Try changing your filters or searching for another topic."}
                   </p>
                   <button
                     onClick={clearAll}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0F172A] text-white text-sm font-medium hover:bg-slate-800 transition"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0F172A] text-white text-sm font-medium hover:bg-slate-800 transition cursor-pointer"
                   >
                     <X className="w-4 h-4" />
                     Clear All Filters

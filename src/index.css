@@ -132,6 +132,11 @@
   animation: pb-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
 }
 
+.pb-success-steps {
+  opacity: 0;
+  animation: pb-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.48s forwards;
+}
+
 .pb-success-actions {
   opacity: 0;
   animation: pb-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.54s forwards;
@@ -235,6 +240,7 @@
   .pb-success-icon,
   .pb-success-heading,
   .pb-success-body,
+  .pb-success-steps,
   .pb-success-actions {
     animation: none;
     opacity: 1;
