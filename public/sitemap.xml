@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Note: Update https://projectbridge.in with the final production domain upon live deployment -->
+  <!-- Note: Update https://projvanta.in with the final production domain upon live deployment -->
   <url>
-    <loc>https://projectbridge.in/</loc>
+    <loc>https://projvanta.in/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://projectbridge.in/request-project</loc>
+    <loc>https://projvanta.in/request-project</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectbridge.in/privacy-policy</loc>
+    <loc>https://projvanta.in/privacy-policy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://projectbridge.in/terms</loc>
+    <loc>https://projvanta.in/terms</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -37,7 +37,7 @@ export function formatProjectRequestEmail(formData) {
     ? `\n\nADDITIONAL DETAILS\n${optionalParts.join('\n')}`
     : '';
 
-  return `Hello ProjectBridge Team,
+  return `Hello Projvanta Team,
 
 I would like to request a project.
 
@@ -97,7 +97,7 @@ export function formatProjectIdeaEmail(projectIdea) {
 
   const description = projectIdea.description?.trim() || projectIdea.overview?.trim() || 'Not provided';
 
-  return `Hello ProjectBridge Team,
+  return `Hello Projvanta Team,
 
 I am interested in requesting the following project:
 

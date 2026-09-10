@@ -497,7 +497,7 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
                     Opening your email client...
                   </p>
                   <p>
-                    Your project details have been pre-filled into your default email app. Please review the email and press <strong className="text-slate-800 font-semibold">Send</strong> to deliver your request to ProjectBridge.
+                    Your project details have been pre-filled into your default email app. Please review the email and press <strong className="text-slate-800 font-semibold">Send</strong> to deliver your request to Projvanta.
                   </p>
                   <div className="pt-1 border-t border-blue-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-500">
                     <span>Didn&apos;t open automatically?</span>
@@ -518,7 +518,7 @@ export default function RequestForm({ onSubmitSuccess, initialData }) {
           )}
 
           <p className="mt-3.5 text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-            By submitting, you agree that ProjectBridge may review your requirement and contact you via Phone or WhatsApp. See our{' '}
+            By submitting, you agree that Projvanta may review your requirement and contact you via Phone or WhatsApp. See our{' '}
             <Link to="/privacy-policy" className="text-blue-600 hover:underline">
               Privacy Policy
             </Link>{' '}

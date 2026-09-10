@@ -1,5 +1,5 @@
 /**
- * ProjectBridge Global Configuration
+ * Projvanta Global Configuration
  * 
  * To update the receiving WhatsApp number (e.g., when switching from a personal
  * number to an official business number), edit WHATSAPP_NUMBER below.

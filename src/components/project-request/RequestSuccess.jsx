@@ -40,7 +40,7 @@ export default function RequestSuccess({ emailUrl, onReset }) {
 
         {/* Message */}
         <p className="pb-success-body text-sm sm:text-base text-slate-600 leading-relaxed max-w-lg mx-auto mb-8">
-          Thank you for choosing ProjectBridge. Your project request has been sent via email. Our team will review your requirements and get in touch with you soon.
+          Thank you for choosing Projvanta. Your project request has been sent via email. Our team will review your requirements and get in touch with you soon.
         </p>
 
         {/* What Happens Next */}
@@ -132,7 +132,7 @@ export default function RequestSuccess({ emailUrl, onReset }) {
       {/* Instruction */}
       <p className="pb-success-body text-sm sm:text-base text-slate-600 leading-relaxed max-w-lg mx-auto mb-6">
         We&apos;ve opened your email app with your project details pre-filled.
-        Please review the email and press <strong className="text-slate-800 font-semibold">Send</strong> in your email app to deliver your request to ProjectBridge.
+        Please review the email and press <strong className="text-slate-800 font-semibold">Send</strong> in your email app to deliver your request to Projvanta.
       </p>
 
       {/* Steps instruction card */}

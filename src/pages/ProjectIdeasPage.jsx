@@ -140,7 +140,7 @@ export default function ProjectIdeasPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title={isPopular ? "Popular Software Project Ideas — ProjectBridge" : "Project Ideas for B.Tech Students — ProjectBridge"}
+        title={isPopular ? "Popular Software Project Ideas — Projvanta" : "Project Ideas for B.Tech Students — Projvanta"}
         description="Explore 50+ academic software project ideas for CSE, IT, and AI & ML. Filter by branch, year, technology, and difficulty. Find your perfect B.Tech software project."
       />
       <Navbar />

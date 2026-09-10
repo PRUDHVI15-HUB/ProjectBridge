@@ -78,7 +78,7 @@ export default function ProjectIdeaDetailPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title={isSubmitted ? "Request Submitted — ProjectBridge" : `${title} — Project Ideas | ProjectBridge`}
+        title={isSubmitted ? "Request Submitted — Projvanta" : `${title} — Project Ideas | Projvanta`}
         description={description}
       />
       <Navbar />

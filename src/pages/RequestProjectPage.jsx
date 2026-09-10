@@ -27,8 +27,8 @@ export default function RequestProjectPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title={isSubmitted ? "Request Submitted — ProjectBridge" : "Request a Project — ProjectBridge"}
-        description="Submit your academic project requirements to ProjectBridge. We review your specifications, discuss the tech stack and timeline, and help you build your project."
+        title={isSubmitted ? "Request Submitted — Projvanta" : "Request a Project — Projvanta"}
+        description="Submit your academic project requirements to Projvanta. We review your specifications, discuss the tech stack and timeline, and help you build your project."
       />
       <Navbar />
 

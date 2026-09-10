@@ -30,7 +30,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <SEO
-        title="ProjectBridge — Academic Project Support for B.Tech Students"
+        title="Projvanta | From Idea to Working Project"
         description="Empowering Indian B.Tech engineering students to design, develop, and present custom academic projects. Share your requirements and turn your idea into a working system."
       />
       <Navbar />

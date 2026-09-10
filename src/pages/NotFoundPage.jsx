@@ -13,8 +13,8 @@ export default function NotFoundPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title="Page Not Found — ProjectBridge"
-        description="The page you are looking for does not exist or has been moved. Return to ProjectBridge homepage."
+        title="Page Not Found — Projvanta"
+        description="The page you are looking for does not exist or has been moved. Return to Projvanta homepage."
       />
       <Navbar />
 

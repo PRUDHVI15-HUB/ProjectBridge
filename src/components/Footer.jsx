@@ -30,7 +30,7 @@ export default function Footer() {
                 <GraduationCap className="w-4 h-4" />
               </div>
               <span className="text-lg font-bold tracking-tight text-white">
-                ProjectBridge
+                Projvanta
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
@@ -114,7 +114,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start">
-            <span>© 2026 ProjectBridge. All rights reserved.</span>
+            <span>© 2026 Projvanta. All rights reserved.</span>
             <span className="hidden sm:inline text-slate-700">•</span>
             <Link to="/privacy-policy" className="hover:text-slate-300 transition">
               Privacy Policy

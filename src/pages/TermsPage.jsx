@@ -14,8 +14,8 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title="Terms & Conditions — ProjectBridge"
-        description="Review the terms and conditions, requirement evaluation process, and academic guidelines for using ProjectBridge services."
+        title="Terms & Conditions — Projvanta"
+        description="Review the terms and conditions, requirement evaluation process, and academic guidelines for using Projvanta services."
       />
       <Navbar />
 
@@ -54,7 +54,7 @@ export default function TermsPage() {
                 1. Acceptance of Terms
               </h2>
               <p className="text-sm sm:text-base">
-                Welcome to ProjectBridge (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). By accessing our website or submitting a project requirement through our platform, you agree to comply with and be bound by these Terms &amp; Conditions. If you do not agree with any part of these terms, please do not use our services.
+                Welcome to Projvanta (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). By accessing our website or submitting a project requirement through our platform, you agree to comply with and be bound by these Terms &amp; Conditions. If you do not agree with any part of these terms, please do not use our services.
               </p>
             </section>
 
@@ -64,7 +64,7 @@ export default function TermsPage() {
                 2. Nature of Our Services
               </h2>
               <p className="text-sm sm:text-base">
-                ProjectBridge provides technical guidance, architectural planning, custom codebase development, system documentation, and viva preparation mentorship for engineering and B.Tech students. All services are tailored to individual project specifications submitted by the student.
+                Projvanta provides technical guidance, architectural planning, custom codebase development, system documentation, and viva preparation mentorship for engineering and B.Tech students. All services are tailored to individual project specifications submitted by the student.
               </p>
             </section>
 
@@ -87,7 +87,7 @@ export default function TermsPage() {
                 4. Pricing &amp; Quotations
               </h2>
               <p className="text-sm sm:text-base">
-                ProjectBridge does not employ fixed package pricing because academic project complexities vary widely. Custom pricing is estimated and communicated transparently after the project requirements, technology stack, and deadlines have been discussed and agreed upon with the student.
+                Projvanta does not employ fixed package pricing because academic project complexities vary widely. Custom pricing is estimated and communicated transparently after the project requirements, technology stack, and deadlines have been discussed and agreed upon with the student.
               </p>
             </section>
 
@@ -97,12 +97,12 @@ export default function TermsPage() {
                 5. Academic Integrity &amp; Student Responsibility
               </h2>
               <p className="text-sm sm:text-base text-slate-700">
-                ProjectBridge operates as an educational and technical mentorship resource designed to assist students in understanding modern software architecture, engineering standards, and clean code practices.
+                Projvanta operates as an educational and technical mentorship resource designed to assist students in understanding modern software architecture, engineering standards, and clean code practices.
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-slate-600 pl-2">
                 <li>Students remain solely responsible for understanding the architecture, code logic, and functioning of their project.</li>
                 <li>Students are responsible for complying with their institution&apos;s academic honor code, syllabus rules, and project submission guidelines.</li>
-                <li>ProjectBridge does not make claims or guarantees regarding specific academic grades, examination scores, viva marks, university approvals, or job placements.</li>
+                <li>Projvanta does not make claims or guarantees regarding specific academic grades, examination scores, viva marks, university approvals, or job placements.</li>
               </ul>
             </section>
 
@@ -122,7 +122,7 @@ export default function TermsPage() {
                 7. Third-Party Messaging Platforms
               </h2>
               <p className="text-sm sm:text-base">
-                Our service utilizes WhatsApp click-to-chat to connect students with engineering mentors. Your use of WhatsApp is subject to WhatsApp&apos;s Terms of Service. ProjectBridge is not responsible for connectivity issues, carrier charges, or outages on third-party communication platforms.
+                Our service utilizes WhatsApp click-to-chat to connect students with engineering mentors. Your use of WhatsApp is subject to WhatsApp&apos;s Terms of Service. Projvanta is not responsible for connectivity issues, carrier charges, or outages on third-party communication platforms.
               </p>
             </section>
 
@@ -132,7 +132,7 @@ export default function TermsPage() {
                 8. Disclaimer
               </h2>
               <p className="text-sm sm:text-base">
-                To the fullest extent permitted by applicable law, ProjectBridge provides all technical assistance and code samples on an &quot;as is&quot; and &quot;as available&quot; basis without warranties of any kind, whether express or implied.
+                To the fullest extent permitted by applicable law, Projvanta provides all technical assistance and code samples on an &quot;as is&quot; and &quot;as available&quot; basis without warranties of any kind, whether express or implied.
               </p>
             </section>
 

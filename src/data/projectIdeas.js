@@ -1,9 +1,9 @@
 /**
- * ProjectBridge — Project Ideas Data
+ * Projvanta — Project Ideas Data
  * 
  * Curated software project idea suggestions for B.Tech students (1st to 4th year).
  * All projects are strictly SOFTWARE DEVELOPMENT implementations (No hardware/IoT).
- * Students request development support through the ProjectBridge request form.
+ * Students request development support through the Projvanta request form.
  */
 
 export const projectIdeas = [

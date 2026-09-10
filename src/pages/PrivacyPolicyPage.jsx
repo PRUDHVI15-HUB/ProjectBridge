@@ -14,8 +14,8 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <SEO
-        title="Privacy Policy — ProjectBridge"
-        description="Learn how ProjectBridge handles student requirements, contact information, and WhatsApp project submissions with complete transparency."
+        title="Privacy Policy — Projvanta"
+        description="Learn how Projvanta handles student requirements, contact information, and project submissions with complete transparency."
       />
       <Navbar />
 
@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
                 1. Overview & Commitment
               </h2>
               <p className="text-sm sm:text-base">
-                ProjectBridge (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) provides project-related assistance and engineering mentorship for Indian B.Tech and college students. We respect your privacy and are committed to being completely transparent about how your information is handled when you use our website.
+                Projvanta (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) provides project-related assistance and engineering mentorship for Indian B.Tech and college students. We respect your privacy and are committed to being completely transparent about how your information is handled when you use our website.
               </p>
             </section>
 
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
                 5. Architecture & Data Storage
               </h2>
               <p className="text-sm sm:text-base">
-                ProjectBridge V1 operates as a frontend-only platform. We do not store your submitted form data in a public cloud database on this website. Communications and details voluntarily shared through WhatsApp are retained directly within WhatsApp conversations and by the ProjectBridge team for ongoing project support and follow-up.
+                Projvanta V1 operates as a frontend-only platform. We do not store your submitted form data in a public cloud database on this website. Communications and details voluntarily shared through WhatsApp are retained directly within WhatsApp conversations and by the Projvanta team for ongoing project support and follow-up.
               </p>
             </section>
 
@@ -145,7 +145,7 @@ export default function PrivacyPolicyPage() {
                 8. Student Audience
               </h2>
               <p className="text-sm sm:text-base">
-                ProjectBridge is intended for college and university students working on engineering and technical academic projects. If you are below the age required by applicable law to provide personal data, please use this service with the guidance of a parent, guardian, or faculty mentor.
+                Projvanta is intended for college and university students working on engineering and technical academic projects. If you are below the age required by applicable law to provide personal data, please use this service with the guidance of a parent, guardian, or faculty mentor.
               </p>
             </section>
 

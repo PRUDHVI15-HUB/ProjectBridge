@@ -16,7 +16,7 @@ export function formatProjectRequestMessage(formData) {
   const deadline = formData.deadline?.trim() || 'Not provided';
   const additionalNotes = formData.additionalNotes?.trim() || 'Not provided';
 
-  return `🚀 New Project Request — ProjectBridge
+  return `🚀 New Project Request — Projvanta
 
 STUDENT DETAILS
 Name: ${formData.fullName?.trim() || 'Not provided'}
@@ -37,7 +37,7 @@ Deadline: ${deadline}
 Additional Requirements: ${additionalNotes}
 
 ---
-Submitted through ProjectBridge`;
+Submitted through Projvanta`;
 }
 
 /**
@@ -65,9 +65,9 @@ export function formatProjectIdeaMessage(projectIdea) {
 
   const description = projectIdea.description?.trim() || 'Not provided';
 
-  return `🚀 Project Request — ProjectBridge
+  return `🚀 Project Request — Projvanta
 
-Hi ProjectBridge! I’m interested in this project:
+Hi Projvanta! I’m interested in this project:
 
 PROJECT DETAILS
 Project: ${title}
@@ -82,10 +82,10 @@ ${technologies}
 DESCRIPTION
 ${description}
 
-I found this project on the ProjectBridge Project Ideas page and would like to know more about building it.
+I found this project on the Projvanta Project Ideas page and would like to know more about building it.
 
 ---
-Submitted through ProjectBridge
+Submitted through Projvanta
 Build. Learn. Deliver.`;
 }
 

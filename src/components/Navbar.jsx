@@ -41,7 +41,7 @@ export default function Navbar() {
               <GraduationCap className="w-5 h-5" />
             </div>
             <span className="text-xl font-bold tracking-tight text-slate-900">
-              ProjectBridge
+              Projvanta
             </span>
           </Link>
 
