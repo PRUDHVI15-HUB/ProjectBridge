@@ -80,6 +80,21 @@
   animation: pb-fade-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
 }
 
+/* ── Hero visual carousel transitions ────────────────────── */
+.pb-carousel-fade {
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pb-progress-fill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.pb-progress-active {
+  animation: pb-progress-fill 10s linear forwards;
+}
+
 /* ── Scroll-reveal system ────────────────────────────────── */
 /* Elements start hidden; JS adds .pb-revealed when in view  */
 
@@ -271,6 +286,16 @@
 
   .pb-step-badge {
     transition: none;
+  }
+
+  .pb-carousel-fade {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .pb-progress-active {
+    animation: none !important;
+    width: 100% !important;
   }
 }
 

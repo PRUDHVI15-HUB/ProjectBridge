@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Lightbulb, Layout, Code2, Award, ChevronDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import HeroVisualCarousel from './HeroVisualCarousel';
 
 export default function Hero() {
   const scrollToHowItWorks = () => {
@@ -50,97 +51,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Your Project Journey Card — entrance: fade-left */}
+          {/* Right Column: Visual Carousel — entrance: fade-left */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="pb-hero-card w-full max-w-md bg-white rounded-2xl border border-slate-200/90 p-7 shadow-sm hover:shadow-md transition">
-              
-              {/* Card Title */}
-              <div className="text-center mb-6">
-                <span className="text-xs font-semibold text-slate-500 uppercase tracking-widest">
-                  Your Project Journey
-                </span>
-              </div>
-
-              {/* Steps List */}
-              <div className="space-y-3">
-                
-                {/* Step 1 */}
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50/70 border border-slate-100 hover:bg-slate-50 transition">
-                  <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 flex-shrink-0">
-                    <Lightbulb className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900 tracking-wider">
-                      STEP 01 <span className="font-semibold text-slate-700 ml-1">IDEA</span>
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5 leading-snug">
-                      You bring your concept or standard college prompt
-                    </div>
-                  </div>
-                </div>
-
-                {/* Connector */}
-                <div className="flex justify-center -my-1 text-slate-300">
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-
-                {/* Step 2 */}
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50/70 border border-slate-100 hover:bg-slate-50 transition">
-                  <div className="w-10 h-10 rounded-lg bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0">
-                    <Layout className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900 tracking-wider">
-                      STEP 02 <span className="font-semibold text-slate-700 ml-1">PLAN</span>
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5 leading-snug">
-                      We design technology stack &amp; architectural plan
-                    </div>
-                  </div>
-                </div>
-
-                {/* Connector */}
-                <div className="flex justify-center -my-1 text-slate-300">
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-
-                {/* Step 3 */}
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50/70 border border-slate-100 hover:bg-slate-50 transition">
-                  <div className="w-10 h-10 rounded-lg bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0">
-                    <Code2 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900 tracking-wider">
-                      STEP 03 <span className="font-semibold text-slate-700 ml-1">BUILD</span>
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5 leading-snug">
-                      We create clean, commented code tailored to your needs
-                    </div>
-                  </div>
-                </div>
-
-                {/* Connector */}
-                <div className="flex justify-center -my-1 text-slate-300">
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-
-                {/* Step 4 */}
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50/70 border border-slate-100 hover:bg-slate-50 transition">
-                  <div className="w-10 h-10 rounded-lg bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0">
-                    <Award className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900 tracking-wider">
-                      STEP 04 <span className="font-semibold text-slate-700 ml-1">PROJECT</span>
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5 leading-snug">
-                      You receive functional system + documentation
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            <HeroVisualCarousel />
           </div>
 
         </div>
